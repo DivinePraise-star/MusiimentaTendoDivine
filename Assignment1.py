@@ -1,86 +1,91 @@
-#   ASSIGNMENT 1: Bill Split Calculator
-#   Author:     Musiimenta Tendo Divine, 24/U/07405/PS
-#   Description: Splits a restaurant bill
-#                among people, including tip.
+# Assignment 1: Bill Split Calculator
 
-print("====================================")
-print("      BILL SPLIT CALCULATOR")
-print("====================================\n")
-
-# ---- Step 1: Ask for inputs ----
-
-# Ask for total bill amount
-while True:
-    try:
-        bill_amount = float(input("Enter the total bill amount (UGX): "))
-        if bill_amount <= 0:
-            print("Please enter a positive amount.")
-        else:
-            break
-    except ValueError:
-        print("Invalid input! Please enter a number.")
-
-print("\nGreat! Now, let's get the number of people.")
-# Ask for number of people
-while True:
-    try:
-        num_people = int(input("Enter the number of people splitting the bill: "))
-        if num_people <= 0:
-            print("Please enter at least 1 person.")
-        else:
-            break
-    except ValueError:
-        print("Invalid input! Please enter a whole number.")
-
-print("\nAlmost done! Now for the tip.")
-
-# Ask for tip percentage
-print("\nChoose tip percentage:")
-print("  1. 10%")
-print("  2. 15%")
-print("  3. 20%")
-print("  4. Custom")
-
-while True:
-    tip_choice = input("Enter your choice (1/2/3/4): ")
-    
-    if tip_choice == "1":
-        tip_percent = 10
-        break
-    elif tip_choice == "2":
-        tip_percent = 15
-        break
-    elif tip_choice == "3":
-        tip_percent = 20
-        break
-    elif tip_choice == "4":
+def get_numeric_input(prompt):
+    """
+    Gets a numeric input from the user, with validation.
+    It ensures the user enters a positive number.
+    """
+    while True:
         try:
-            tip_percent = float(input("Enter your custom tip percentage: "))
-            if tip_percent < 0:
-                print("Tip cannot be negative.")
+            value = float(input(prompt))
+            if value > 0:
+                return value
             else:
-                break
+                print("Please enter a positive number.")
         except ValueError:
-            print("Invalid input! Please enter a number.")
-    else:
-        print("Please choose 1, 2, 3, or 4.")
+            print("Invalid input. Please enter a number.")
 
-# ---- Step 2: Do the calculations ----
+def get_tip_percentage():
+    """
+    Gets the tip percentage from the user.
+    Offers predefined options or a custom value.
+    """
+    print("\nChoose a tip percentage:")
+    print("1. 10%")
+    print("2. 15%")
+    print("3. 20%")
+    print("4. Custom")
 
-tip_amount = (tip_percent / 100) * bill_amount
-total_bill = bill_amount + tip_amount
-amount_per_person = total_bill / num_people
+    while True:
+        choice = input("Enter your choice (1-4): ")
+        if choice == '1':
+            return 10.0
+        elif choice == '2':
+            return 15.0
+        elif choice == '3':
+            return 20.0
+        elif choice == '4':
+            return get_numeric_input("Enter custom tip percentage: ")
+        else:
+            print("Invalid choice. Please select 1, 2, 3, or 4.")
 
-# ---- Step 3: Print the formatted receipt ----
+def calculate_bill(total_bill, num_people, tip_percent):
+    """
+    Calculates the tip amount, total bill with tip, and amount per person.
+    Returns a dictionary with the calculated values.
+    """
+    tip_amount = total_bill * (tip_percent / 100)
+    total_with_tip = total_bill + tip_amount
+    amount_per_person = total_with_tip / num_people
+    
+    return {
+        "tip_amount": tip_amount,
+        "total_with_tip": total_with_tip,
+        "amount_per_person": amount_per_person
+    }
 
-print("\n====================================")
-print("           RECEIPT SUMMARY")
-print("====================================")
-print(f"  Original Bill:      UGX {bill_amount:,.2f}")
-print(f"  Tip ({tip_percent}%):          UGX {tip_amount:,.2f}")
-print(f"  Total Bill:         UGX {total_bill:,.2f}")
-print(f"  Number of People:   {num_people}")
-print("------------------------------------")
-print(f"  Each Person Pays:   UGX {amount_per_person:,.2f}")
-print("====================================")
-print("\nThank you! Enjoy your meal!")
+def display_receipt(bill_details, total_bill, num_people, tip_percent):
+    """
+    Displays a formatted receipt with all the calculations.
+    """
+    print("\n--- Receipt ---")
+    print(f"Total Bill: ${total_bill:.2f}")
+    print(f"Number of People: {int(num_people)}")
+    print(f"Tip Percentage: {tip_percent}%")
+    print("-" * 15)
+    print(f"Tip Amount: ${bill_details['tip_amount']:.2f}")
+    print(f"Total Bill with Tip: ${bill_details['total_with_tip']:.2f}")
+    print("-" * 15)
+    print(f"Each person's share: ${bill_details['amount_per_person']:.2f}")
+    print("--- End of Receipt ---")
+
+def main():
+    """
+    Main function to run the Bill Split Calculator.
+    """
+    print("--- Bill Split Calculator ---")
+    
+    # 1. Ask for inputs
+    bill_amount = get_numeric_input("Enter the total bill amount: $")
+    number_of_people = get_numeric_input("Enter the number of people: ")
+    tip_percentage = get_tip_percentage()
+    
+    # 2. Calculate
+    calculations = calculate_bill(bill_amount, number_of_people, tip_percentage)
+    
+    # 3. Output
+    display_receipt(calculations, bill_amount, number_of_people, tip_percentage)
+
+# Run the main function when the script is executed
+if __name__ == "__main__":
+    main()
