@@ -26,6 +26,11 @@ A simple guessing game where the user tries to guess the winner of the 2026 Worl
 - **File:** `Assignment3.py`
 - **Concepts:** `while` loops, and loop control statements (`break`, `continue`, `pass`).
 
+## 🧮 Assignment 4: GUI Calculator
+A graphical user interface (GUI) calculator built with Python's tkinter library. It features a modern, dark-themed design with interactive buttons for performing standard arithmetic operations.
+
+- **File:** Assignment4.py
+- **Concepts:** Functions, GUI programming with tkinter, event handling, and layout management.
 ---
 
 *Course: Year II, Recess 2025/26*
