@@ -1,0 +1,12 @@
+
+2026-06-27 19:26:34,319 - INFO - Added student: S005 - Brighton Kwagala
+2026-06-27 19:27:14,855 - INFO - Viewed all student records.
+2026-06-27 19:27:16,497 - INFO - Viewed all student records.
+2026-06-27 19:30:49,160 - INFO - Viewed all student records.
+2026-06-27 21:18:01,939 - INFO - Viewed all student records.
+2026-06-27 21:18:47,339 - INFO - System closed by user.
+2026-06-27 21:21:27,627 - ERROR - Error reading JSON: Expecting value: line 1 column 1 (char 0)
+2026-06-27 21:21:27,629 - INFO - Added student: S001 - Tendo Divine
+2026-06-27 21:22:23,383 - INFO - Added student: S002 - Kwagala Brighton
+2026-06-27 21:22:26,483 - INFO - Viewed all student records.
+2026-06-27 21:22:28,846 - INFO - Viewed all student records.

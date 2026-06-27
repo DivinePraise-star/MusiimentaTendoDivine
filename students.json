@@ -1,0 +1,16 @@
+{
+    "S001": {
+        "address": "Wakiso",
+        "contact": "0754216331",
+        "program": "Software Engineering",
+        "year_of_study": "2"
+    },
+    "S002": {
+        "name": "Kwagala Brighton Mulungi",
+        "dateofbirth": "",
+        "address": "Kampala",
+        "contact": "075321345",
+        "program": "Computer Science",
+        "year_of_study": "1"
+    }
+}
